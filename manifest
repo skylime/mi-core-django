@@ -1,0 +1,8 @@
+name="core-django"
+organization="SkyLime"
+brand="Instance"
+version="14.2.0"
+description="Python django web zone"
+homepage="https://github.com/skylime/mi-core-django"
+users="root admin"
+base="99c9e7ac-34ed-11e4-bdc4-236f63b1ea9d"
