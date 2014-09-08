@@ -17,8 +17,8 @@ set -o errexit
 
 # Configuring image specific packages
 
-# Setup permissions for roundcubemail folders
-echo "* Setup permissions for roundcubemail folders"
+# Setup permissions for www folders
+echo "* Setup permissions for www folders"
 chown -R www:www /var/www
 
 # Nginx SSL folder
