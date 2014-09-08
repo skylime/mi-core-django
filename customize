@@ -15,10 +15,10 @@ MUNIN_PLUGINS=(
 # Exit if any commands fail
 set -o errexit
 
-# Configuring image specific packages
-
 # Setup permissions for www folders
 echo "* Setup permissions for www folders"
+mkdir /var/www/django
+mkdir /var/www/static
 chown -R www:www /var/www
 
 # Nginx SSL folder
