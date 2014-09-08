@@ -26,7 +26,8 @@ if mdata-get django_url 1>/dev/null 2>&1 && \
 	./manage.py collectstatic
 
 	# Configure gunicorn
-	svccfg -s gunicorn:django setprop config/app   = astring: ${PROJECT}
+	svccfg -s gunicorn:django setprop config/app   = astring: ${PROJECT}.wsgi:application
+	svcadm refresh gunicorn:django
 	svcadm enable  gunicorn:django
 	svcadm restart gunicorn:django
 fi
