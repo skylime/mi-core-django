@@ -23,7 +23,7 @@ if mdata-get django_url 1>/dev/null 2>&1 && \
 		| ./manage.py shell
 	# Ugly workaround for STATIC_ROOT
 	echo "STATIC_ROOT = '/var/www/static'" >> /var/www/django/${PROJECT}/settings.py
-	./manage.py collectstatic
+	./manage.py collectstatic --noinput
 
 	# Configure gunicorn
 	svccfg -s gunicorn:django setprop config/app   = astring: ${PROJECT}.wsgi:application
