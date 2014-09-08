@@ -4,8 +4,6 @@
 
 PATH=/opt/local/gnu/bin:/opt/local/bin:/opt/local/sbin:/usr/bin:/usr/sbin
 
-ROUNDCUBE_VERSION=1.0.1
-
 # Munin plugins
 MUNIN_PLUGIN_SRC='/opt/local/lib/munin/plugins'
 MUNIN_PLUGIN_DST='/opt/local/etc/munin/plugins'
@@ -18,18 +16,6 @@ MUNIN_PLUGINS=(
 set -o errexit
 
 # Configuring image specific packages
-echo "* Configuring image specific packages.";
-mkdir -p /var/www/roundcubemail
-
-# Download Roundcube and extract it to /var/www
-echo "* Download and extract roundcube to /var/www"
-curl -L "https://github.com/roundcube/roundcubemail/releases/download/${ROUNDCUBE_VERSION}/roundcubemail-${ROUNDCUBE_VERSION}.tar.gz" | tar xz -C /var/www/roundcubemail --strip-components=1
-
-# Download Roundcube plugins and extract them
-echo "* Download Roundcube plugins and extract them"
-mkdir -p /var/www/roundcubemail/plugins/html5_notifier
-curl -L "https://github.com/kitist/html5_notifier/archive/v0.5.2.tar.gz" | tar xz -C /var/www/roundcubemail/plugins/html5_notifier --strip-components=1
-cp /var/www/roundcubemail/plugins/html5_notifier/config/config.inc.php.dist /var/www/roundcubemail/plugins/html5_notifier/config/config.inc.php
 
 # Setup permissions for roundcubemail folders
 echo "* Setup permissions for roundcubemail folders"
@@ -38,10 +24,6 @@ chown -R www:www /var/www
 # Nginx SSL folder
 echo "* Create ssl folder"
 mkdir -p /opt/local/etc/nginx/ssl
-
-# Remove install folder from roundcube
-echo "* Remove install folder from roundcube"
-rm -r /var/www/roundcubemail/installer
 
 # Activate munin plugins
 echo "* Activate munin plugins"
