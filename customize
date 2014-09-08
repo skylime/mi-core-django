@@ -17,8 +17,8 @@ set -o errexit
 
 # Setup permissions for www folders
 echo "* Setup permissions for www folders"
-mkdir /var/www/django
-mkdir /var/www/static
+mkdir -p /var/www/django
+mkdir -p /var/www/static
 chown -R www:www /var/www
 
 # Nginx SSL folder
