@@ -15,12 +15,6 @@ MUNIN_PLUGINS=(
 # Exit if any commands fail
 set -o errexit
 
-# Setup permissions for www folders
-echo "* Setup permissions for www folders"
-mkdir -p /var/www/django
-mkdir -p /var/www/static
-chown -R www:www /var/www
-
 # Nginx SSL folder
 echo "* Create ssl folder"
 mkdir -p /opt/local/etc/nginx/ssl
