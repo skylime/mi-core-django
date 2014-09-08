@@ -1,6 +1,7 @@
 #!/bin/bash
 # Configure nginx ssl certificate and authentication
 
+host=$(mdata-get sdc:hostname)
 cert_dir='/opt/local/etc/nginx/ssl/'
 
 # SSL
