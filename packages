@@ -2,3 +2,4 @@
 nginx
 py33-gunicorn
 py33-pip
+py33-expat

@@ -19,6 +19,11 @@ set -o errexit
 echo "* Create ssl folder"
 mkdir -p /opt/local/etc/nginx/ssl
 
+# Setup gunicorn
+echo "* Setup gunicorn"
+mkdir -p /opt/local/etc/gunicorn
+svccfg import /tmp/gunicorn.xml
+
 # Activate munin plugins
 echo "* Activate munin plugins"
 for plugin in "${MUNIN_PLUGINS[@]}"; do
