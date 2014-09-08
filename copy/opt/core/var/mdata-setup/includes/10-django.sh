@@ -13,7 +13,6 @@ if mdata-get django_url 1>/dev/null 2>&1 && \
 	# Create django project
 	mkdir /var/www/django
 	curl -L "${URL}" | tar xz -C /var/www/django --strip-components=1
-	chown -R www:www /var/www
 
 	# Setup
 	cd /var/www/django
@@ -24,6 +23,9 @@ if mdata-get django_url 1>/dev/null 2>&1 && \
 	# Ugly workaround for STATIC_ROOT
 	echo "STATIC_ROOT = '/var/www/static'" >> /var/www/django/${PROJECT}/settings.py
 	./manage.py collectstatic --noinput
+
+	# Have nice permissions
+	chown -R www:www /var/www
 
 	# Configure gunicorn
 	svccfg -s gunicorn:django setprop config/app   = astring: ${PROJECT}.wsgi:application
