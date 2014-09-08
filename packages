@@ -1,5 +1,5 @@
 # List packages to add to your image one per line.
 nginx
-py33-gunicorn
-py33-pip
-py33-expat
+py27-gunicorn
+py27-pip
+py27-expat
